@@ -1,0 +1,26 @@
+{
+  "name": "authentic",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --ext js,hbs app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.4.0",
+    "bcrypt": "^5.1.0",
+    "dotenv": "^16.1.4",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "firebase": "^9.22.1",
+    "firebase-admin": "^11.9.0",
+    "hbs": "^4.2.0",
+    "method-override": "^3.0.0",
+    "mongoose": "^7.2.2",
+    "node-fetch": "^3.3.1"
+  }
+}

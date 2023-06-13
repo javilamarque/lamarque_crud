@@ -1,0 +1,55 @@
+{{>header}}
+
+
+{{!-- <div class="container">
+    <form action="/products/edit/{{product.id}}" method="post">
+        <label for="name">Nombre</label>
+        <input type="text" name="name" id="name" value="{{product.name}}">
+        <label for="marca">Marca</label>
+        <input type="text" name="marca" id="id" value="{{product.marca}}">
+        <label for="price">Precio</label>
+        <input type="text" name="price" id="price" value="{{product.price}}">
+        <label for="supplier">Proveedor</label>
+        <input type="text" name="supplier" id="supplier" value="{{product.supplier}}">
+
+        <input type="submit" value="Guardar">
+    </form>
+</div> --}}
+
+
+<div class="row d-flex justify-content-center align-items-center mt-5">
+    <div class="col-sm-6 mb-3 mb-sm-0 border border-dark-subtle">
+        <div class="card-body">
+            <h3 class="card-title text-center p-3 mb-2 bg-success-subtle text-emphasis-success">Editar Producto</h3>
+            <div class="row">
+                <ul class="list-group list-group-flus">
+                    <li class="list-group-item">
+                        <p><span class=" text-primary font-weight-bold"> Nombre: </span>{{product.name}}</p>
+                    </li>
+                    <li class="list-group-item">
+                        <p><span class=" text-primary font-weight-bold"> Marca: </span>{{product.marca}}</p>
+                    </li>
+                    <li class="list-group-item">
+                        <p><span class=" text-primary font-weight-bold"> Precio: </span>{{product.price}}</p>
+                    </li>
+                    <li class="list-group-item">
+                        <p><span class=" text-primary font-weight-bold"> Proveedor: </span>{{product.supplier}}</p>
+                    </li>
+                </ul>
+
+                <div class="col-md-6 d-flex justify-content-center align-items-center">
+                    <div>
+                        <a href="/products/edit/{{this.id}}" class="btn btn-primary">Guardar</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div>
+                        <a href="/products" class="btn btn-danger">Cancelar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{>footer}}

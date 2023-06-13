@@ -1,0 +1,25 @@
+{{>header}}
+<!-- delete-product.hbs -->
+
+<div class="container">
+    <div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading">Estas seguro que quieres eliminar este producto</h4>
+    </div>
+    <form action="/products/delete/{{product.id}}?_method=DELETE" method="post">
+        <ul>
+            <li>
+                <p><span class=" text-primary font-weight-bold"> Nombre: </span>{{product.name}}</p>
+                <p><span class=" text-primary font-weight-bold"> Marca: </span>{{product.marca}}</p>
+                <p><span class=" text-primary font-weight-bold"> Precio: </span>{{product.price}}</p>
+                <p><span class=" text-primary font-weight-bold"> Proveedor </span>{{product.supplier}}</p>
+            </li>
+        
+        
+        <button class="btn btn-danger" type="submit" name="action" value="delete">Eliminar</button>
+        <button class="btn btn-success" type="submit" name="action" value="cancel">Volver</button>
+        </ul>
+    </form>
+    </p>
+</div>
+
+{{>footer}}

@@ -1,0 +1,53 @@
+{{>header}}
+
+{{#each products}}
+
+<div class="row d-flex justify-content-center align-items-center mt-5">
+    
+    <div class="col-sm-6 mb-3 mb-sm-0 border border-dark-subtle">
+        
+        <div class="card-body">
+                
+            <h5 class="card-title">Listado de Productos</h5>
+
+            <ul class="list-group list-group-flus">
+                <li class="list-group-item">
+                    <p><span class=" text-primary font-weight-bold"> Nombre: </span>{{this.name}}</p> 
+                </li>
+                <li class="list-group-item">
+                    <p><span class=" text-primary font-weight-bold"> Marca: </span>{{this.marca}}</p>
+                </li>
+                <li class="list-group-item">
+                    <p><span class=" text-primary font-weight-bold"> Precio: </span>{{this.price}}</p>
+                </li>
+                <li class="list-group-item"><span class=" text-primary font-weight-bold"> Proveedor: </span>{{this.supplier}}</p>
+                </li>
+            </ul>
+
+            <div class="row">
+                <div class="col-md-6 d-flex justify-content-center align-items-center">
+                    <div>
+                        <a href="/products/edit/{{this.id}}" class="btn btn-success">Editar Producto</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div>
+                        <a href="/products/delete/{{this.id}}" class="btn btn-danger">Eliminar Producto</a>
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+    </div>
+    
+    </div>
+    
+    <br>
+
+    {{/each}}
+    <div class="text-center mt-5">
+    <a href="/products/create" class="btn btn-primary">Cargar producto</a>
+    <a href="/logout" class="btn btn-warning">Cerrar seccion</a>
+    </div>
+    {{>footer}}     

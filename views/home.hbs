@@ -1,0 +1,29 @@
+{{>header}}
+{{>navbar}}
+
+{{message}}
+<div class="container mt-5">
+    <h3>{{title}}</h3>
+    <h1>Inicio de Sesion</h1>
+    <form action="/login" method="post">
+        <label for="mail">E-mail</label>
+        <input type="text" name="mail" id="mail" required>
+        <label for="password">Contraseña</label>
+        <input type="password" name="password" id="password" required>
+        <button type="submit" class="btn btn-primary">Ingresar</button>
+        <a href="/register"><button type="button" class="btn btn-success">Registrar</button></a>
+    </form>
+</div>
+
+
+{{>footer}}
+<!-- Dentro de home.hbs -->
+<script>
+    // Obtener el mensaje de alerta pasado desde el router
+    const alertMessage = "{{ alertMessage }}";
+
+    // Mostrar el mensaje de alerta si existe
+    if (alertMessage) {
+        alert(alertMessage);
+    }
+</script>

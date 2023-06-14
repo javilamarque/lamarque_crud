@@ -1,16 +1,16 @@
 {{>header}}
 <div class="container">
     <form class="d-flex" role="search" action="/api/images" method="GET">
-    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="q">
-    <button class="btn btn-outline-success" type="submit">Buscar</button>
+    <input class="form-control me-2 mt-5" type="search" placeholder="Search" aria-label="Search" name="q">
+    <button class="btn btn-outline-success mt-5" type="submit">Buscar</button>
 </form>
     <h1>Imágenes</h1>
     <div class="container">
     <div class="row">
         {{#each images}}
-        <div class="col-md-4 mt-5">
+        <div class="col-md-4 mt-5 mb-5">
             <div class="card">
-                <img src="{{this.urls.regular}}" class="card-img-top" alt="{{this.alt_description}}">
+                <img src="{{this.urls.regular}}" class="card-img-top fixed-size-image mx-auto mt-2"  alt="{{this.alt_description}}">
                 <div class="card-body">
                     <h5 class="card-title">Descripcion: {{this.alt_description}}</h5>
                     <p class="card-text">Autor: {{this.user.name}}</p>
@@ -20,4 +20,7 @@
         {{/each}}
     </div>
 </div>
+
+
+{{>footer}}
 

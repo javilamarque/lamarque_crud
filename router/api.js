@@ -13,7 +13,7 @@ router.get('/images', async (req, res) => {
         const width = 800;
         const height = 600;
         // Realizar la solicitud a la API de Unsplash
-        const response = await axios(`https://api.unsplash.com/search/photos/?client_id=${API_KEY}&query=${searchTerm}&per_page=20&w=${width}&h=${height}`, {
+        const response = await axios(`https://api.unsplash.com/search/photos/?client_id=${API_KEY}&query=${searchTerm}&per_page=21&w=${width}&h=${height}`, {
             headers: {
                 Authorization: `${API_KEY}`,
             }

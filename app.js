@@ -27,7 +27,7 @@ app.set('view engine', 'hbs')
 app.use(express.urlencoded({ extended: true }));
 //CONFIGURAMOS LOS PARTIALS NAVBAR HEADER Y FOOTER
 hbs.registerPartials(__dirname + '/views/partials');
-app.use(express.static('public'));
+app.use(express.static("public"));
 
 //requerimos las rutas 
 app.use('/', rutasRoutes)  

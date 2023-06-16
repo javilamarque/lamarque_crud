@@ -21,20 +21,21 @@ router.get('/', async (req, res) => {
     res.render('home', {title: 'bienvenido, debes registarte o logearte para ver los productos'})
 })
 //pagina de inicio debe logearse para ver los productos
-router.post('/login', async (req, res) => {
-    const { mail, password } = req.body;
-    //busca al usuario por correo electronico
+router.post('/login', async (req, res) => {          //ruta POST para manejar la solicitud.
+    const { mail, password } = req.body;            // Extrae las propiedades 'mail' y 'password' del cuerpo (body) de la solicitud HTTP
+    //busca al usuario por correo electronico       //y las asigna a las variables 'mail' y 'password' respectivamente. 
     try {
-        const user = await User.findOne({ mail }); //utilizamos el METODO findOne de mongo para verificar que se encuentre el mail
+        const user = await User.findOne({ mail });          //utilizamos el METODO findOne de mongo para verificar que se encuentre el mail de la variable 'mail'
         //usuario no encontrado
-        if (!user) {
+        if (!user) {                                        //Comprueba si la variable 'user' es falsa o nula
             
-            return res.render('home', { alertMessage: 'Usuario no encontrado' });
+            return res.render('home', { alertMessage: 'Usuario no encontrado' }); //si no se encuentra, renderiza a home para llamar al script
         }
 
         //comparamos la contraseña proporcionada con la base de datos
-        const isPasswordValid = await user.comparePassword(password);
-        if (!isPasswordValid) {
+        const isPasswordValid = await user.comparePassword(password);           //Llama al método 'comparePassword' en el objeto 'user'
+                                                                                //para verificar si la contraseña proporcionada coincide con la contraseña almacenada en la base de datos
+        if (!isPasswordValid) {                                                 //Comprueba si la variable 'isPasswordValid' es falsa o nula, lo que significa que la contraseña proporcionada no es válida.
             return res.render('home', { alertMessage: 'Usuario o contraseña incorrectos' });
         }
 
@@ -49,9 +50,14 @@ router.post('/login', async (req, res) => {
 
 //ELIMINAMOS LA SECCION
 router.get('/logout', (req, res) => {
-    req.session.destroy();
+    req.session.destroy();                              //Llama al método 'destroy()' en el objeto 'session' de la solicitud (req) para destruir la sesión del usuario
     res.redirect('/')
 })
+
+router.post('/logout', (req, res) => {
+    req.session.destroy();
+    res.redirect('/');
+});
 
 //----------------------------------------------------------------REGISTER DE USUARIOS --------------------------------------------------------------------------
 router.get('/register', (req, res) => {
@@ -168,10 +174,5 @@ router.delete('/products/delete/:id', async (req, res) => {
         res.send('Error al eliminar el producto');
     }
 });
-
-
-
-
-
 
 module.exports = router;

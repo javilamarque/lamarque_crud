@@ -4,6 +4,7 @@ const rutasRoutes = require('./router/rutas')
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const apiRouter = require('./router/api');
+const mailRoutes = require('./router/mailRoutes')
 
 
 const app = express();
@@ -32,6 +33,7 @@ app.use(express.static("public"));
 //requerimos las rutas 
 app.use('/', rutasRoutes)  
 app.use('/api', apiRouter)
+app.use('/', mailRoutes);
 
 
 

@@ -9,6 +9,6 @@ admin.initializeApp({
 
 //optenemos una instancia de firebase
 const db = admin.firestore();
-const productsCollection = db.collection('products');
+const productsCollection = db.collection('products');   //se utiliza el método collection() de Firestore para obtener una referencia a la colección "products" en la base de datos.
 
 module.exports = { db, productsCollection };

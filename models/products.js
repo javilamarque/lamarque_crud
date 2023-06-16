@@ -12,9 +12,9 @@ class Product {
     }
 
     static async getAllProducts() {
-        const productsSnapshot = await db.collection('products').get();
-        const products = productsSnapshot.docs.map(doc => new Product({ id: doc.id, ...doc.data() }));
-        return products;
+        const productsSnapshot = await db.collection('products').get();            //db es una instancia a la base de datos
+        const products = productsSnapshot.docs.map(doc => new Product({ id: doc.id, ...doc.data() })); //utilizamos el metodo map para iterar cada producto
+        return products;   //nos devuelve el array de products
     }
 }
 

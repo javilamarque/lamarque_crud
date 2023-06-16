@@ -2,23 +2,19 @@ const mongoose = require('mongoose');
 // instale un modulo para encriptar la contraseña llamada BCRYPT
 const bcrypt = require('bcrypt');
 
-mongoose.connect('mongodb://localhost:27017/users');
-;
+mongoose.connect('mongodb://localhost:27017/users');;
 
 // define un esquema de usuario utilizando Mongoose 
-
 const userSchema = new mongoose.Schema({ //Esta línea crea una nueva instancia de un esquema de Mongoose llamado userSchema 
     //Aquí se define la propiedad name del esquema del usuario.
     name: {
         type: String,
 
     },
-    //Esta línea define la propiedad mail del esquema del usuario.
     mail: {
         type: String,
 
     },
-    //Esta línea define la propiedad password del esquema del usuario.
     password: {
         type: String,
 

@@ -30,7 +30,7 @@ router.get('/images', async (req, res) => {
         }
     } catch (error) {
         console.error(error);
-        res.send('Error al obtener las imágenes');      //. Dentro de este bloque, se muestra un mensaje de error en la respuesta HTTP
+        res.send('Error al obtener las imágenes');      // Dentro de este bloque, se muestra un mensaje de error en la respuesta HTTP
     }
 });
 

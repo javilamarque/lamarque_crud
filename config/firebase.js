@@ -4,7 +4,7 @@ const admin = require('firebase-admin');
 const serviceAccount = require('../crud-lamarque-firebase-adminsdk-p8ck1-d6a38e3997.json');
 
 admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount)
+    credential: admin.credential.cert(serviceAccount)   //objeto que contiene las credenciales de autenticación de servicio necesarias para acceder a los servicios de Firebase. 
 })
 
 //optenemos una instancia de firebase

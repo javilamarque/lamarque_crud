@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 // instale un modulo para encriptar la contraseña llamada BCRYPT
 const bcrypt = require('bcrypt');
 
-mongoose.connect('mongodb://localhost:27017/users');;
+mongoose.connect('mongodb://localhost:27017/users');;        //conexion a base de datos de mongo
 
 // define un esquema de usuario utilizando Mongoose 
 const userSchema = new mongoose.Schema({ //Esta línea crea una nueva instancia de un esquema de Mongoose llamado userSchema 
@@ -34,7 +34,7 @@ userSchema.pre('save', function (next) {         //Esta línea registra el middl
     })
 })
 
-//metodo para comparar contraseñas y mail en mongo
+//metodo para comparar contraseñas en mongo
 
 userSchema.methods.comparePassword = function (candidatePassword) {  //Esta línea define un método llamado comparePassword, El método acepta un parámetro candidatePassword,     
                                                                     //que es la contraseña que se quiere comparar con la contraseña almacenada en el documento de usuario.

@@ -1,15 +1,15 @@
 const express = require('express');
-const User = require('../models/user');
-const Product = require('../models/products');
-const { productsCollection } = require('../config/firebase');
-const session = require('express-session');
-const router = express.Router();
-const methodOverride = require('method-override');
+const User = require('../models/user');                         //requerimos y hacemos uso de archivo user fde la carpeta model para poder almacenar los datos en mongo
+const Product = require('../models/products');                  //llamamos al modelo product de model
+const { productsCollection } = require('../config/firebase'); //llamamos a productsCollection de la carpeta config archivo firebase.js
+const session = require('express-session');                   //requerimos session para los inicio de sesion
+const router = express.Router();                                //requerimos router de express
+const methodOverride = require('method-override');             //metodo overredi para utilizar el metodo delete
 
 // Configurar method-override para poder eliminar
 router.use(methodOverride('_method'));
 
-//DEFINIMOS SESSION PARA QUE LA PROPIEDAD "DESTROY" PARA LUEGO USAR EL OBJETO REQ.SESSION  
+//DEFINIMOS SESSION  
 router.use(session({
     secret: '123456', // una clave secreta para firmar la sesión
     resave: false,
@@ -29,26 +29,26 @@ router.post('/login', async (req, res) => {          //ruta POST para manejar la
         //usuario no encontrado
         if (!user) {                                        //Comprueba si la variable 'user' es falsa o nula
             
-            return res.render('home', { alertMessage: 'Usuario no encontrado' }); //si no se encuentra, renderiza a home para llamar al script
+            return res.render('home', { alertMessage: 'Usuario no encontrado' }); //si no se encuentra, renderiza a home para llamar al script del home
         }
 
         //comparamos la contraseña proporcionada con la base de datos
         const isPasswordValid = await user.comparePassword(password);           //Llama al método 'comparePassword' en el objeto 'user'
                                                                                 //para verificar si la contraseña proporcionada coincide con la contraseña almacenada en la base de datos
-        if (!isPasswordValid) {                                                 //Comprueba si la variable 'isPasswordValid' es falsa o nula, lo que significa que la contraseña proporcionada no es válida.
-            return res.render('home', { alertMessage: 'Usuario o contraseña incorrectos' });
+        if (!isPasswordValid) {                                      //Comprueba si la variable 'isPasswordValid' es falsa o nula, lo que significa que la contraseña proporcionada no es válida.
+            return res.render('home', { alertMessage: 'Contraseña incorrecta' }); //script de home
         }
 
         //autenticacion exitosa 
         return res.redirect('/products')
     } catch (err) {
         console.error(err)
-        return res.render('home', { alertMessage: 'Error en el servidor' });
+        return res.render('home', { alertMessage: 'Error en el servidor' });    //script de home
     }
 
 })
 
-//ELIMINAMOS LA SECCION
+//------------------------------------------------------------------ELIMINAMOS LA SECCION----------------------------------------------------------------------
 router.get('/logout', (req, res) => {
     req.session.destroy();                              //Llama al método 'destroy()' en el objeto 'session' de la solicitud (req) para destruir la sesión del usuario
     res.redirect('/')
@@ -143,12 +143,12 @@ router.get('/products', async (req, res) => {
 //--------------------------------------------------------------------------------ELIMINAR PRODUCTO-----------------------------------------------------------------------------------
 
 
-router.get('/products/delete/:id', async (req, res) => {
+router.get('/products/delete/:id', async (req, res) => {        //definimos la ruta get donde id es un parametro dinamico 
     const productId = req.params.id;
     const productsSnapshot = await productsCollection.doc(productId).get();
     const product = {
         id: productsSnapshot.id,
-        ...productsSnapshot.data(),
+        ...productsSnapshot.data(),                     //operador de propagacion para copiar los datos del objeto a product
     }
     res.render('delete-product', { product });
 });
@@ -157,17 +157,17 @@ router.get('/products/delete/:id', async (req, res) => {
 
 //esta ruta DELETE se utiliza para eliminar un producto específico de la base de datos utilizando su ID.
 router.delete('/products/delete/:id', async (req, res) => {
-    const productId = req.params.id;
-    const action = req.body.action;
+    const productId = req.params.id;                      //recupera el ID del producto
+    const action = req.body.action;                        //verifica el valor de la variable 'action'
 
     try {
-        if (action === 'delete') {
+        if (action === 'delete') {                          // si es igual se elimina el documento correspondiente al ID 
             await productsCollection.doc(productId).delete();
             res.redirect('/products');
-        } else if (action === 'cancel') {
+        } else if (action === 'cancel') {                   //si cnacela se redirecciona a products
             res.redirect('/products');
         } else {
-            res.send('Acción inválida');
+            res.send('Acción inválida');                
         }
     } catch (error) {
         console.error(error);

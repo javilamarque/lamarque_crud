@@ -14,8 +14,8 @@ const transporter = nodemailer.createTransport({
     host: 'sandbox.smtp.mailtrap.io',
     port: 2525,
     auth: {
-        user: USER_MAILTRAP, // Reemplaza con tu dirección de correo electrónico
-        pass: PASS_MAILTRAP // Reemplaza con tu contraseña de correo electrónico
+        user: USER_MAILTRAP, 
+        pass: PASS_MAILTRAP,
     }
 });
 
@@ -58,7 +58,7 @@ router.post('/enviar', (req, res) => {
         })
         .catch(error => {
             console.log(error);
-            res.sendStatus(500);
+            res.sendStatus(500);   //Error interno del servidor
         });
 });
 

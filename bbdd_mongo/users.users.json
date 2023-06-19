@@ -1,18 +1,48 @@
 [{
   "_id": {
-    "$oid": "64865859ada2c490ee01721a"
+    "$oid": "648bd2266ca9bdc775749539"
   },
-  "name": "alan",
-  "mail": "ala@gmail.com",
-  "password": "$2b$10$PdUARtIWGctzSowvPSTrnumqumpeA/6Nv6Q3Zq0XnN0YFCXbRs78K",
+  "nombre": "javier",
+  "correo": "ja@gmail.com",
+  "mensaje": "prueba",
+  "fecha": {
+    "$date": "2023-06-16T03:08:22.320Z"
+  },
   "__v": 0
 },
 {
   "_id": {
-    "$oid": "64887c5e0fde21c1d034dfe1"
+    "$oid": "648bd25c2083919f4a649fa5"
   },
-  "name": "javier",
-  "mail": "j@gmail.com",
-  "password": "$2b$10$VWrQ42T3wVPw.9G1N69MrOd7VHeATqwyD2Vl3WfZdFwlbhb2HqsWO",
+  "nombre": "gisela",
+  "correo": "gise@gmail.com",
+  "mensaje": "prueba 2",
+  "fecha": {
+    "$date": "2023-06-16T03:09:16.514Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648bd3e934a252cfd121c3d7"
+  },
+  "nombre": "javier",
+  "correo": "gise@gmail.com",
+  "mensaje": "nada",
+  "fecha": {
+    "$date": "2023-06-16T03:15:53.653Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648bdaded1a93d87bf6c6ed9"
+  },
+  "nombre": "javier",
+  "correo": "jvrlamarque@gmail.com",
+  "mensaje": "papapapappapapapa",
+  "fecha": {
+    "$date": "2023-06-16T03:45:34.715Z"
+  },
   "__v": 0
 }]
